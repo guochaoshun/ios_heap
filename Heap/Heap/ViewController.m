@@ -20,13 +20,41 @@
     
     [self heapSort];
     
+    [self findTopKItem];
+
+}
+
+// 找出数组中前k大的元素
+- (void)findTopKItem{
+    
+    int a[10] = {1,2,23, 3,4,35, 5,7,10, 33};
+    int k = 3;
+    
+    // 维护一个大小为k的小顶堆,超出时pop,pop出去的就是堆中的最小值,循环完成后,最大的k个元素就保留在堆中了
+    Heap * heap = [[Heap alloc] initWithSize:k heapType:HeapSmallTop];
+    for (int i = 0; i<10; i++) {
+        
+        [heap addIntValue:a[i]];
+        if (heap.count>k) {
+            [heap popTopValue];
+        }
+        
+    }
+    
+    for (int i = k; i>0; i--) {
+        NSLog(@"前%d大的元素: %d",k,heap.popTopValue);
+    }
     
 }
 
+
+
+
+/*
+  堆排序
+  */
 - (void)heapSort {
-    /*
-     堆排序
-     */
+ 
     int num = 20;
     int a[num];
     

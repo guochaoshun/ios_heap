@@ -54,15 +54,16 @@
 }
 
 - (instancetype)init{
-    return [self initWithSize:100];
+    return [self initWithSize:100 heapType:HeapBigTop];
 }
 
-- (instancetype)initWithSize:(int)size {
+- (instancetype)initWithSize:(int)size heapType:(HeapType)type{
     self = [super init];
     if (self) {
-        if (size<=0) {
+        if (size<100) {
             size = 100;
         }
+        _type = type;
         _size = size;
         heap = (int * ) malloc(size * sizeof(int));
         indexNum = 0;
@@ -232,6 +233,9 @@
     
 }
 
+- (NSString *)debugDescription {
+    return [self description];
+}
 
 - (NSString *)description {
     

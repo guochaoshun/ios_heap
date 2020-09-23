@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithArray:(int [_Nonnull])array Size:(int)size heapType:(HeapType)type;
 
 /// 默认size=100, 堆中可放100个元素
-- (instancetype)initWithSize:(int)size;
+- (instancetype)initWithSize:(int)size heapType:(HeapType)type;
 
 /// 把数字放入堆中, 并重构堆
 - (void)addIntValue:(int)newValue ;
